@@ -1,0 +1,38 @@
+A small collection of code for pricing a European option on a Binomial tree.
+Please also see the Cottrell_BinomialTree.pdf file.
+
+April 2010
+
+Author: David Cottrell
+
+Compilation:
+	Run 'make' to produce:
+		test_OptionPrice
+		OptionPrice_cmdline
+	Run 'make mex' to compile mex wrapper.
+
+Tests:
+	Shell:
+		test_OptionPrice
+		OptionPrice_cmdline $N $T $u $d $p $S0 $K
+
+	MATLAB:
+		test_OptionPrice.m
+		plotQ15.m
+
+In this directory:
+	NOTES.txt
+
+	makefile
+
+	EuropeanOption.cpp
+	EuropeanOption.h
+	OptionPriceMexWrapper.cpp
+	OptionPrice_cmdline.cpp
+	test_OptionPrice.cpp
+
+	f1.m
+	f2.m
+	mexmake.m
+	plotQ15.m
+	test_OptionPrice.m
