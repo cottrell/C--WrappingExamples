@@ -1,9 +1,4 @@
 A small collection of code for pricing a European option on a Binomial tree.
-Please also see the Cottrell_BinomialTree.pdf file.
-
-April 2010
-
-Author: David Cottrell
 
 Compilation:
 	Run 'make' to produce:

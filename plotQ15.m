@@ -1,9 +1,8 @@
-%% plotQ15.m - a MATLAB script by David Cottrell (david.cottrell@gmail.com), April 2010
 %	Price an option using c++/mex code.
 %	figure 1: Plot the results as a function of 1/(Delta t)
 %	figure 2: Plot the computation time as a funciton of 1/(Delta t)
 %
-%	Depends on 
+%	Depends on
 %		C++ source files:
 %			OptionPriceMexWrapper.cpp
 %			EuropeanOption.h
@@ -16,23 +15,20 @@
 %		mex -v OptionPriceMexWrapper.cpp EuropeanOption.cpp
 %	or	mexmake % (this is a script ./mexmake.m )
 %
-%	Using: 	MATLAB 7.7.0.471 (R2008b)
-%		i686-apple-darwin9-g++-4.0.1 (GCC) 4.0.1 (Apple Inc. build 5465)
-%	
 
 !rm EuropeanOption.log		% remove the logfile produced by PriceOption function
 
 
-% if calc_err_using_exact_result 1, plot Error = abs(V0 -Vexact) 
+% if calc_err_using_exact_result 1, plot Error = abs(V0 -Vexact)
 % if calc_err_using_exact_result 0, use relative difference
-calc_err_using_exact_result = 1	
+calc_err_using_exact_result = 1
 
 %% PARAMETERS TO CHANGE
 % these variables are the same in both the CRR and JR case
-T 	= 1	
+T 	= 1
 S0	= 100
 K	= 100
-sigma 	= 0.2 
+sigma 	= 0.2
 
 % change the ranges here
 Nvec	= 2.^[4:16];

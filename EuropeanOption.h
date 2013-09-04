@@ -1,7 +1,7 @@
 #ifndef EUROPEANOPTION_H
 #define EUROPEANOPTION_H
 
-using namespace std;
+// using namespace std;
 
 //===  FUNCTION  ======================================================================
 //        Name:  OptionPrice

@@ -1,4 +1,18 @@
-all: test_OptionPrice OptionPrice_cmdline
+all: swig test_OptionPrice OptionPrice_cmdline
+
+# just use distutils and swig
+swig: EuropeanOption_wrap.cxx
+	python3 setup.py build_ext --inplace
+	python3 example.py # run the example
+
+EuropeanOption_wrap.cxx: EuropeanOption.cpp EuropeanOption.i
+	swig -c++ -python EuropeanOption.i
+
+# _EuropeanOption.so: EuropeanOption_wrap.o
+# 		g++ -bundle `python-config --ldflags` EuropeanOption.o EuropeanOption_wrap.o -o _EuropeanOption.so
+# EuropeanOption_wrap.o: EuropeanOption_wrap.cxx
+# 		g++ -c `python-config --cflags` EuropeanOption.cpp EuropeanOption_wrap.cxx
+
 
 mex: OptionPriceMexWrapper
 
@@ -21,4 +35,4 @@ EuropeanOption.o: EuropeanOption.cpp EuropeanOption.h
 	g++ -c EuropeanOption.cpp
 
 clean:
-	rm -rf *.o *.log *.mex* test_OptionPrice OptionPrice_cmdline
+	rm -rf __pycache__ *_wrap* build *.o *.so *.log *.mex* test_OptionPrice OptionPrice_cmdline

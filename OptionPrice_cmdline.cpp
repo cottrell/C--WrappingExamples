@@ -7,8 +7,8 @@ int main ( int argc, char *argv[] )
         const int numinputs = 7;
 
         if ( argc != numinputs+1 ) {
-                cout << "Error: " << argc-1 << " inputs given, " << numinputs << " required." << endl;
-		cout << "Usage: OptionPrice_cmdline N T u d p S0 K" << endl;
+		std::cout << "Error: " << argc-1 << " inputs given, " << numinputs << " required." << std::endl;
+		std::cout << "Usage: OptionPrice_cmdline N T u d p S0 K" << std::endl;
                 exit(1);
         }
 
@@ -25,7 +25,7 @@ int main ( int argc, char *argv[] )
 
         double a = OptionPrice(N,T,u,d,p,S0,K);
 
-        cout << "The Option Price is: " << a << endl;
+	std::cout << "The Option Price is: " << a << std::endl;
 
         return EXIT_SUCCESS;
 }

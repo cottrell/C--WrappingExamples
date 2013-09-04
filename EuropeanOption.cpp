@@ -5,13 +5,13 @@
 #include	<float.h> 		// for access to DBL_MAX_EXP and DBL_MIN_EXP
 #include	"EuropeanOption.h"
 
-using namespace std;
+// using namespace std;
 
 double OptionPrice(const int N, const double T, const double u, const double d, const double p, const double S0, const double K)
 {
 
-	ofstream logfile; 	// write log data here (for debugging and testing)
-	logfile.open("EuropeanOption.log",ios::app);
+	std::ofstream logfile; 	// write log data here (for debugging and testing)
+	logfile.open("EuropeanOption.log",std::ios::app);
 
 	// some logicals for ensuring the parameters are safe
 	const bool OVER_MAX = (N*log2(u) >= DBL_MAX_EXP), \
@@ -23,21 +23,21 @@ double OptionPrice(const int N, const double T, const double u, const double d, 
 	// 	payoff values do not lead to over/under flow. This check
 	// 	would have to be given by the user providing the payoff function.
 	if ( OVER_MAX || UNDER_MIN || d_IS_NONPOSITIVE){
-		logfile << "OptionPrice -----------------" << endl;
+		logfile << "OptionPrice -----------------" << std::endl;
 		if (OVER_MAX) {
-			logfile << "\t Error: u^N <= MAX_DBL with u = " << u << " and N = " << N << endl;
+			logfile << "\t Error: u^N <= MAX_DBL with u = " << u << " and N = " << N << std::endl;
 		}
 		if (UNDER_MIN) {
-			logfile << "\t Error: u^N <= MIN_DBL with d = " << d << " and N = " << N  << endl;
+			logfile << "\t Error: u^N <= MIN_DBL with d = " << d << " and N = " << N  << std::endl;
 		}
 		if (d_IS_NONPOSITIVE) {
-			logfile << "\t Error: d = " << d << " is non-positive!" << endl;
+			logfile << "\t Error: d = " << d << " is non-positive!" << std::endl;
 		}
 		return NAN; // comment this out if you want to see the results with overflow, underflow or d<0
 	}
 	// otherwise proceed with the calculation
 	else {
-		vector<double> V; 				// use this vector for both stock and option values
+		std::vector<double> V; 				// use this vector for both stock and option values
 
 		V.resize(N+1);
 		unsigned int i,j;
@@ -68,6 +68,6 @@ double OptionPrice(const int N, const double T, const double u, const double d, 
 
 double payoff(const double S, const double K){
 
-	return max(S-K,0.0);	// the payoff for a European call optiob
+	return std::max(S-K,0.0);	// the payoff for a European call optiob
 
 } // end double payoff( ... )
